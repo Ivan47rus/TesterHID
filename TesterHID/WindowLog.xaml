@@ -1,0 +1,114 @@
+﻿<Window x:Class="TesterHID.WindowLog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="WindowLog" Height="313" Width="820"  WindowStyle="None" 
+        Background="Transparent" AllowsTransparency="True" ResizeMode="NoResize">
+
+    <Border CornerRadius="30" BorderThickness="5" Background="#B0000000" Padding="5"
+		MouseLeftButtonDown="Border_MouseLeftButtonDown" Grid.RowSpan="2">
+        <Border.BorderBrush>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF8F0F0F" Offset="0.661"/>
+                <GradientStop Color="#FE590808" Offset="0.291"/>
+                <GradientStop Color="#FE590808" Offset="0.404"/>
+                <GradientStop Color="#FEA21010" Offset="0.183"/>
+                <GradientStop Color="#FE5F0C0C" Offset="0.087"/>
+                <GradientStop Color="#FE9E1313" Offset="0.548"/>
+                <GradientStop Color="#FF570B0B" Offset="0.791"/>
+            </LinearGradientBrush>
+        </Border.BorderBrush>
+
+        <Grid Margin="0,10,0,-10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="289*"/>
+                <ColumnDefinition Width="97*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Margin="159,50,15,217" Content="X" MinWidth="25" 
+            	Opacity="0.5" Background="#FFDC2F2F"  x:Name="Button_Exit" 		
+            	BorderThickness="2" BorderBrush="#303030" 
+            	Click="LogWindow_OnExitButtonClick" FontSize="16" 
+            	FontWeight="Bold" RenderTransformOrigin="0.444,0.462" 
+            	ToolTip="Exit" Grid.Column="1" >
+                <Button.Effect>
+                    <DropShadowEffect Color="#FFF06D6D" Direction="325" BlurRadius="10"/>
+                </Button.Effect>
+            </Button>
+
+            <Button Margin="159,81,15,186" Content="-" MinWidth="25" 
+            	Opacity="0.5" Background="#FFFFFEFE"  x:Name="Button_Minimize"		
+            	BorderThickness="2" BorderBrush="#303030" 
+            	Click="LogWindow_OnMinimizeButtonClick" FontSize="20" 
+            	FontWeight="Bold" RenderTransformOrigin="0.963,0.462"
+            	ToolTip="Minimize" Grid.Column="1" >
+                <Button.Effect>
+                    <DropShadowEffect Color="#FFB4B4B4" Direction="325" BlurRadius="10"/>
+                </Button.Effect>
+            </Button>
+
+            <Rectangle Fill="#FF434E54"  
+                   Opacity="0.85" RenderTransformOrigin="0.506,0.48" 
+                   Grid.Column="1" Margin="33,18,60,25">
+
+            </Rectangle>
+
+            <Button Content="Clear" x:Name="Button_Clear" Style="{StaticResource MainWindowButton}"                                     
+                    Background="Black" Foreground="White" 
+                    BorderThickness="5" Opacity="0.8" ToolTip="Clear log"
+                    Focusable="False" Click="Clear_Button_Click" Margin="44,39,72,201" Grid.Column="1">
+                <Button.Effect>
+                    <DropShadowEffect Color="#FF444242"/>
+                </Button.Effect>
+            </Button>
+
+            <Button x:Name="Button_Capture"  Style="{StaticResource LogWindowButton}"
+                	Background="Black" Foreground="White" 
+                	BorderThickness="5" Opacity="0.8" 
+                    Click="Capture_Button_Click" Margin="44,111,72,128" Focusable="False" Grid.Column="1">
+                <Button.Effect>
+                    <DropShadowEffect Color="#FF444242"/>
+                </Button.Effect>
+            </Button>
+
+            <Button Content="Save" x:Name="Button_Save"   Style="{StaticResource MainWindowButton}"                 
+                	Background="Black" Foreground="White" 
+                	BorderThickness="5" Opacity="0.8" ToolTip="Save log to file" 
+                    Click="Save_Button_Click" Margin="44,184,72,56" Focusable="False" Grid.Column="1">
+                <Button.Effect>
+                    <DropShadowEffect Color="#FF444242"/>
+                </Button.Effect>
+            </Button>
+
+            <ListView Margin="19,22,30,25" Name="Log_ListView">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Report"
+                                        Width="200" 
+                                        DisplayMemberBinding="{Binding _Report_str}"/>
+                        <GridViewColumn Header="Time:ms" 
+                                        Width="200" 
+                                        DisplayMemberBinding="{Binding _Time}" />
+                        <GridViewColumn Header="Description" 
+                                        Width="143" 
+                                        DisplayMemberBinding="{Binding _ReportName}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <Border Grid.Column="1" Margin="26,10,53,17"
+                BorderThickness="12"  CornerRadius="10" BorderBrush="#FF3A4449">
+                <Border.Effect>
+                    <BlurEffect/>
+                </Border.Effect>
+            </Border>
+
+            <Border BorderThickness="12"  CornerRadius="10" 
+                    BorderBrush="#FF3A4449" Margin="10,10,19,17">
+                <Border.Effect>
+                    <BlurEffect/>
+                </Border.Effect>
+            </Border>
+
+        </Grid>
+    </Border>
+</Window>
